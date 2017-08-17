@@ -462,6 +462,8 @@ function _lunch_meat()
 
     [[ -n "${ANDROID_QUIET_BUILD:-}" ]] || echo
 
+    fixup_common_out_dir
+
     set_stuff_for_environment
     [[ -n "${ANDROID_QUIET_BUILD:-}" ]] || printconfig
 
@@ -567,6 +569,8 @@ function lunch()
     fi
 
     # Validate the selection and set all the environment stuff
+    check_product $product $release
+
     _lunch_meat $product $release $variant
 }
 
